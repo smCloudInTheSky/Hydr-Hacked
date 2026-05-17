@@ -12,19 +12,19 @@ export async function sendToJDownloader(
   const safeLink = link.replace(/[\r\n]/g, "").trim();
   let safeTitle = "";
 
-  if (title) {
-    safeTitle = title
+  if (titleName) {
+    safeTitle = titleName
       .replace(/[\r\n<>:"/\\|?*]+/g, "")
       .replace(/\.$/, "")
       .trim();
 
     if (isSeries) {
-      console.log(`Série (${title}), configuration paquet JD...`);
+      console.log(`Série (${safeTitle}), configuration paquet JD...`);
       // WARNING: The provided API endpoint does not accept a 'downloadFolder' parameter.
       // JDownloader will rely on your default download directory + the packageName.
       console.log(` -> Note: Custom downloadFolder is not supported by this specific API route.`);
     } else {
-      console.log(`Film (${title}), configuration paquet JD...`);
+      console.log(`Film (${safeTitle}), configuration paquet JD...`);
     }
     console.log(` -> PackageName: ${safeTitle}`);
   }
