@@ -61,6 +61,10 @@ export async function sendToJDownloader(
       console.log(`⚠️ JDownloader a reçu la requête mais a retourné: ${result}`);
     }
   } catch (error) {
-    console.error(`❌ Erreur API JDownloader:`, error.message);
+    let errorMessage = "Failed to do something exceptional";
+    if (error instanceof Error) {
+      errorMessage = error.message;
+    }
+    console.log(errorMessage);
   }
 }
